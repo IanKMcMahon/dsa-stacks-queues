@@ -38,14 +38,16 @@ class Queue {
 
   dequeue() {
     if (this.first === null){
-      if (this.last == null){
-        return err('Queue is empty')
+        throw new Error('Queue is empty')
   }
   else {
-    this.first = removedNode;
-    this.first.next = this.first;
-    return removedNode;
-  }
+   let removedNode = this.first;
+    if (this.first == this.last) {
+      this.last = null;
+    }
+    this.first = this.first.next;
+    this.size--;
+    return removedNode.val;
   }
   }
   /** peek(): return the value of the first node in the queue. */
@@ -64,5 +66,4 @@ class Queue {
     }
   }
 }
-
 module.exports = Queue;
